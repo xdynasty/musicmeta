@@ -71,8 +71,8 @@
     {% endfor %} {% if others %}
     <h3>Other</h3>
     {% endif %} {% for other in others %}
-    <div>{{other.title}}</div>
-    <a href="/release-group/{{other.id}}/">{{other|get_release_date}}</a>
+    <a href="/release-group/{{other.id}}/">{{other.title}}</a>
+    <div>{{other|get_release_date}}</div>
     {% endfor %} {% for page in pages %}
     <a href="/artist/{{artist_id}}/{{page}}">{{page}}</a>
     {% endfor %}
