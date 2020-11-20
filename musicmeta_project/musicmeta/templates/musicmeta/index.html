@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Musicmeta</title>
+  </head>
+  <body>
+    <h1>MUSICMETA</h1>
+    <form action="{% url 'musicmeta:index' %}" method="get">
+      <input
+        type="search"
+        name="searchInput"
+        id="searchInput"
+        placeholder="Enter query"
+      />
+      <input type="submit" value="Search" id="searchBtn" />
+    </form>
+    <div>
+      {% if artists %} {% for artist in artists %}
+      <a
+        ><div class="card">
+          <a><h3>{{artist.name}}</h3></a>
+          <div>Type: {{artist.type}}</div>
+          <div>Begin: {{artist|get_begin}}</div>
+          <div>Country: {{artist.country}}</div>
+        </div></a
+      >
+      {% endfor %} {% endif %}
+    </div>
+  </body>
+</html>
