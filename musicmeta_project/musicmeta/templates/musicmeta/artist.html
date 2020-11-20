@@ -2,74 +2,80 @@
 <html>
   <head>
     <title>MUSICMETA</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'musicmeta/styles.css' %}"
+    />
   </head>
   <body>
     {% if albums %}
-    <h3>Album</h3>
+    <h3 class="heading">Album</h3>
     {% endif %} {% for album in albums %}
     <a href="/release-group/{{album.id}}/">{{album.title}}</a>
     <div>{{album|get_release_date}}</div>
     {% endfor %} {% if album_compilations %}
-    <h3>Album + Compilation</h3>
+    <h3 class="heading">Album + Compilation</h3>
     {% endif %} {% for album_compilation in album_compilations %}
     <a href="/release-group/{{album_compilation.id}}/"
       >{{album_compilation.title}}</a
     >
     <div>{{album_compilation|get_release_date}}</div>
     {% endfor %} {% if album_lives %}
-    <h3>Album + Live</h3>
+    <h3 class="heading">Album + Live</h3>
     {% endif %} {% for album_live in album_lives %}
     <a href="/release-group/{{album_live.id}}/">{{album_live.title}}</a>
     <div>{{album_live|get_release_date}}</div>
     {% endfor %} {% if singles %}
-    <h3>Single</h3>
+    <h3 class="heading">Single</h3>
     {% endif %} {% for single in singles %}
     <a href="/release-group/{{single.id}}/">{{single.title}}</a>
     <div>{{single|get_release_date}}</div>
     {% endfor %} {% if single_lives %}
-    <h3>Single + Live</h3>
+    <h3 class="heading">Single + Live</h3>
     {% endif %} {% for single_live in single_lives %}
     <a href="/release-group/{{single_live.id}}/">{{single_live.title}}</a>
     <div>{{single_live|get_release_date}}</div>
     {% endfor %} {% if single_remixes %}
-    <h3>Single + Remix</h3>
+    <h3 class="heading">Single + Remix</h3>
     {% endif %} {% for single_remix in single_remixes %}
     <a href="/release-group/{{single_remix.id}}/">{{single_remix.title}}</a>
     <div>{{single_remix|get_release_date}}</div>
     {% endfor %} {% if single_remixes %}
-    <h3>Single + Remix</h3>
+    <h3 class="heading">Single + Remix</h3>
     {% endif %} {% for single_remix in single_remixes %}
     <a href="/release-group/{{single_remix.id}}/">{{single_remix.title}}</a>
     <div>{{single_remix|get_release_date}}</div>
     {% endfor %} {% if single_soundtracks %}
-    <h3>Single + Soundtrack</h3>
+    <h3 class="heading">Single + Soundtrack</h3>
     {% endif %} {% for single_soundtrack in single_soundtracks %}
     <a href="/release-group/{{single_soundtrack.id}}/"
       >{{single_soundtrack.title}}</a
     >
     <div>{{single_soundtrack|get_release_date}}</div>
     {% endfor %} {% if eps %}
-    <h3>EP</h3>
+    <h3 class="heading">EP</h3>
     {% endif %} {% for ep in eps %}
     <a href="/release-group/{{ep.id}}/">{{ep.title}}</a>
     <div>{{ep|get_release_date}}</div>
     {% endfor %} {% if ep_lives %}
-    <h3>EP + Live</h3>
+    <h3 class="heading">EP + Live</h3>
     {% endif %} {% for ep_live in ep_lives %}
     <a href="/release-group/{{ep_live.id}}/">{{ep_live.title}}</a>
     <div>{{ep_live|get_release_date}}</div>
     {% endfor %} {% if broadcasts %}
-    <h3>Broadcast</h3>
+    <h3 class="heading">Broadcast</h3>
     {% endif %} {% for broadcast in broadcasts %}
     <a href="/release-group/{{broadcast.id}}/">{{broadcast.title}}</a>
     <div>{{broadcast|get_release_date}}</div>
     {% endfor %} {% if broadcast_lives %}
-    <h3>Broadcast + Live</h3>
+    <h3 class="heading">Broadcast + Live</h3>
     {% endif %} {% for broadcast_live in broadcast_lives %}
     <a href="/release-group/{{broadcast_live.id}}/">{broadcast_live.title}}</a>
     <div>{{broadcast_live|get_release_date}}</div>
     {% endfor %} {% if others %}
-    <h3>Other</h3>
+    <h3 class="heading">Other</h3>
     {% endif %} {% for other in others %}
     <a href="/release-group/{{other.id}}/">{{other.title}}</a>
     <div>{{other|get_release_date}}</div>

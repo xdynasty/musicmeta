@@ -29,33 +29,34 @@ def index(request):
 
 def artist(request, artist_id, page):
   result = browse_release_groups(artist_id, limit=100, offset=page*100)
+  print(result)
   count = result['release-group-count']
   pages = math.ceil(count / 100)
 
   albums, album_compilations, album_lives, singles, single_lives, single_remixes, single_soundtracks, eps, ep_lives, broadcasts, broadcast_lives, others = [
   ], [], [], [], [], [], [], [], [], [], [], []
   for release in result["release-group-list"]:
-    if 'secondary-type' not in release and release['primary-type'] == 'Album':
+    if 'secondary-type-list' not in release and release['primary-type'] == 'Album':
       albums.append(release)
-    elif 'secondary-type' not in release and release['primary-type'] == 'Single':
+    elif 'secondary-type-list' not in release and release['primary-type'] == 'Single':
       singles.append(release)
-    elif 'secondary-type' not in release and release['primary-type'] == 'EP':
+    elif 'secondary-type-list' not in release and release['primary-type'] == 'EP':
       eps.append(release)
-    elif 'secondary-type' not in release and release['primary-type'] == 'Broadcast':
+    elif 'secondary-type-list' not in release and release['primary-type'] == 'Broadcast':
       broadcasts.append(release)
-    elif release['primary-type'] == 'Album' and release['secondary-type'] == 'Compilation':
+    elif release['primary-type'] == 'Album' and release['secondary-type-list'][0] == 'Compilation':
       album_compilations.append(release)
-    elif release['primary-type'] == 'Album' and release['secondary-type'] == 'Live':
+    elif release['primary-type'] == 'Album' and release['secondary-type-list'][0] == 'Live':
       album_lives.append(release)
-    elif release['primary-type'] == 'Single' and release['secondary-type'] == 'Live':
+    elif release['primary-type'] == 'Single' and release['secondary-type-list'][0] == 'Live':
       single_lives.append(release)
-    elif release['primary-type'] == 'Single' and release['secondary-type'] == 'Remix':
+    elif release['primary-type'] == 'Single' and release['secondary-type-list'][0] == 'Remix':
       single_remixes.append(release)
-    elif release['primary-type'] == 'Single' and release['secondary-type'] == 'Soundtrack':
+    elif release['primary-type'] == 'Single' and release['secondary-type-list'][0] == 'Soundtrack':
       single_soundtracks.append(release)
-    elif release['primary-type'] == 'EP' and release['secondary-type'] == 'Live':
+    elif release['primary-type'] == 'EP' and release['secondary-type-list'][0] == 'Live':
       ep_lives.append(release)
-    elif release['primary-type'] == 'Broadcast' and release['secondary-type'] == 'Live':
+    elif release['primary-type'] == 'Broadcast' and release['secondary-type-list'][0] == 'Live':
       broadcast_lives.append(release)
     else:
       others.append(release)
